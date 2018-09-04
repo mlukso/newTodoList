@@ -12,7 +12,8 @@ class List extends Component {
                         <Task 
                             key={index}
                             index={index}
-                            handleClick={this.props.handleClick}
+                            handleIsDone={this.props.handleIsDone}
+                            handleRemoveItem={this.props.handleRemoveItem}
                             todo={todo}
                         />
                     )

@@ -17,7 +17,7 @@ class App extends Component {
     })
   }
 
-  handleClick = (index) => {
+  handleIsDone = (index) => {
     const todos = this.state.todos.slice();
     todos[index].done = !todos[index].done;
     this.setState({todos: todos})
@@ -25,6 +25,7 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    if(this.state.inputValue){
     const newTodo = {
       value: this.state.inputValue,
       done: false
@@ -36,10 +37,19 @@ class App extends Component {
       inputValue: ''
     })
   }
+}
+
+  handleRemoveItem = (index) => {
+    const newListWithoutRemovedItems = this.state.todos.slice();
+    newListWithoutRemovedItems.splice(index, 1);
+    this.setState({
+      todos: newListWithoutRemovedItems
+    })
+  }
 
   render() {
     return (
-      <div className="App">
+      <div className="App" id="main">
         <h2>My Todo List</h2>
         <Form 
           handleChange = {this.handleChange}
@@ -48,7 +58,8 @@ class App extends Component {
         />
         <List 
           todos={this.state.todos}
-          handleClick={this.handleClick}
+          handleIsDone={this.handleIsDone}
+          handleRemoveItem={this.handleRemoveItem}
         />
       </div>
     );

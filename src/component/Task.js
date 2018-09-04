@@ -4,13 +4,21 @@ class Task extends Component {
     render() {
         return (
             <div className="Task">
-                <span 
-                    style={{textDecoration: this.props.todo.done ? 'line-through' : 'none'
+                <ul>
+                    <li
+                    style={{
+                        textDecoration: this.props.todo.done ? 'line-through' : 'none',
+                        color: this.props.todo.done ? 'red' : '#61DAFB'
                 }}>
                     {this.props.todo.value}
-                </span>
-                <button onClick={() => 
-                    this.props.handleClick(this.props.index)}>{this.props.todo.done ? 'Undo' : 'Complete'}</button>
+                <button style={{float: 'right'}} onClick={() => 
+                    this.props.handleRemoveItem(this.props.index)}>{'X'}
+                </button>                    
+                <button style={{float: 'left'}} onClick={() => 
+                    this.props.handleIsDone(this.props.index)}>{this.props.todo.done ? 'undo' : '✓'}
+                </button>
+                </li>
+                </ul>
             </div>
         )
     }
