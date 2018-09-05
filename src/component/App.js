@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Typography from '@material-ui/core/Typography';
 
 import Form from './Form';
 import List from './List';
+
 
 class App extends Component {
 
@@ -50,7 +52,9 @@ class App extends Component {
   render() {
     return (
       <div className="App" id="main">
-        <h2>My Todo List</h2>
+        <Typography variant="display2" gutterBottom>
+            A Simple Todo List
+      </Typography>
         <Form 
           handleChange = {this.handleChange}
           inputValue = {this.state.inputValue}  

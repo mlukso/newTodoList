@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
+import TextField from '@material-ui/core/TextField';
 
 class Form extends Component {
 
   render() {
       return (
-          <div ref="Form" >
-          <form className="form-inline" 
+          <div>
+          <form
             onSubmit={(e) => this.props.handleSubmit(e)}>
-            <input
-              ref="itemName" 
-              className="form-control"
-              placeholder='type something...'
+            <TextField
+              label='Add a todo...'
               onChange={(e) => this.props.handleChange(e)}
               value={this.props.inputValue}
             />

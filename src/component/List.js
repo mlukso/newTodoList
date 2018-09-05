@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Task from './Task'
+import 'typeface-roboto'
 
 class List extends Component {
 
