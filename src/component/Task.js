@@ -18,16 +18,17 @@ class Task extends Component {
                      >
                         <Checkbox           
                             disableRipple
+                            checked={this.props.todo.completed}
                             onClick={() => 
                                 this.props.handleIsDone(this.props.index)}                                 
                         />
                         <ListItemText
                             style={{
-                                textDecoration: this.props.todo.done ? 'line-through' : 'none',
-                                color: this.props.todo.done ? 'red' : 'none',
+                                textDecoration: this.props.todo.completed ? 'line-through' : 'none',
+                                color: this.props.todo.completed ? 'red' : 'none',
                                 fontSize: 18,
                         }}
-                            primary={this.props.todo.value}
+                            primary={this.props.todo.title}
                             />
                         <ListItemSecondaryAction>
                             <IconButton 

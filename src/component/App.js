@@ -13,6 +13,14 @@ class App extends Component {
     todos: []
   }
 
+  componentDidMount() {
+  fetch('https://jsonplaceholder.typicode.com/todos/') 
+    .then(response => response.json()) 
+    .then(data => this.setState({ 
+      todos: data 
+    })) 
+  }
+
   handleChange = (e) => {
     this.setState({
         inputValue: e.target.value
@@ -21,18 +29,20 @@ class App extends Component {
 
   handleIsDone = (index) => {
     const todos = this.state.todos.slice();
-    todos[index].done = !todos[index].done;
+    todos[index].completed = !todos[index].completed;
     this.setState({todos: todos})
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const newTodos = this.state.todos.slice();
     if(this.state.inputValue){
     const newTodo = {
-      value: this.state.inputValue,
-      done: false
+      userId: 1,
+      id: newTodos.length,
+      title: this.state.inputValue,
+      completed: false
     };
-    const newTodos = this.state.todos.slice();
     newTodos.push(newTodo);
     this.setState({
       todos: newTodos,
@@ -59,7 +69,7 @@ class App extends Component {
           handleChange = {this.handleChange}
           inputValue = {this.state.inputValue}  
           handleSubmit={this.handleSubmit}
-        />
+        /> 
         <List 
           todos={this.state.todos}
           handleIsDone={this.handleIsDone}

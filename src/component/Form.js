@@ -13,7 +13,7 @@ class Form extends Component {
               onChange={(e) => this.props.handleChange(e)}
               value={this.props.inputValue}
             />
-            </form>
+            </form>            
           </div>
       )
   }
